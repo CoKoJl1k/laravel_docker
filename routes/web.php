@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,28 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use App\Models\User;
 
 Route::get('/', function () {
-    return view('welcome');
+/*
+    $user = User::create([
+        'name' => 'Taylor',
+        'email' => 'Otwell6@email.ru',
+        'password' => 'password6',
+    ]);*/
+    $users = DB::table('users')->get();
+/*
+    $servername = "db";
+    $username = "root";
+    $password = "1234";
+    $db = 'laravel';
+
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
+        echo "Connected successfully";
+    } catch(PDOException $e) {
+        echo "Connection failed: " . $e->getMessage();
+    }
+    */
+    return view('index',  ['users' => $users]   );
 });
