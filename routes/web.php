@@ -15,14 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 use App\Models\User;
 
-//Route::get('/', function () {
+Route::get('/db', function () {
 /*
     $user = User::create([
         'name' => 'Taylor',
         'email' => 'Otwell6@email.ru',
         'password' => 'password6',
     ]);*/
-   // $users = DB::table('users')->get();
+
+    $users = DB::table('users')->get();
+    $users = DB::select('select * from users');
 /*
     $servername = "db";
     $username = "root";
@@ -35,13 +37,11 @@ use App\Models\User;
     } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-    */
-   // return view('index',  ['users' => $users]   );
-//});
+*/
+   return view('index',  ['users' => $users]   );
+});
 
 
 Route::get('/', function () {
-
     return view('welcome' );
-
 });
