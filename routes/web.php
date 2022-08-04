@@ -21,15 +21,15 @@ Route::get('/db', function () {
         'name' => 'Taylor',
         'email' => 'Otwell6@email.ru',
         'password' => 'password6',
-    ]);*/
-
-    $users = DB::table('users')->get();
+    ]);
+*/
+    //$users = DB::table('users')->get();
     $users = DB::select('select * from users');
-/*
+
     $servername = "db";
     $username = "root";
     $password = "1234";
-    $db = 'laravel';
+    $db = 'laravel2';
 
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$db", $username, $password);
@@ -37,7 +37,7 @@ Route::get('/db', function () {
     } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-*/
+
    return view('index',  ['users' => $users]   );
 });
 

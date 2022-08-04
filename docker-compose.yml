@@ -18,7 +18,7 @@ services:
             - ./:/var/www
             - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
         networks:
-            - app-network
+            - app-network2
 
     #Nginx Service
     webserver:
@@ -33,7 +33,7 @@ services:
             - ./:/var/www
             - ./nginx/conf.d/:/etc/nginx/conf.d/
         networks:
-            - app-network
+            - app-network2
 
     #MySQL Service
     db:
@@ -44,7 +44,7 @@ services:
         ports:
             - "3306:3306"
         environment:
-            MYSQL_DATABASE: laravel
+            MYSQL_DATABASE: laravel2
             MYSQL_ROOT_PASSWORD: 1234
             SERVICE_TAGS: dev
             SERVICE_NAME: mysql
@@ -52,11 +52,11 @@ services:
             - dbdata:/var/lib/mysql/
             - ./mysql/my.cnf:/etc/mysql/my.cnf
         networks:
-            - app-network
+            - app-network2
 
 #Docker Networks
 networks:
-    app-network:
+    app-network2:
         driver: bridge
 #Volumes
 volumes:
